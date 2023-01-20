@@ -13,6 +13,7 @@ computer_choice = rand(3)
 jankens = ["グー","チョキ","パー","戦わない"]
 
 puts "ホイ！"
+puts "----------------------------------"
 
 puts "あなた:#{jankens[player_choice]}を出しました"
 puts "相手:#{jankens[computer_choice]}を出しました"
