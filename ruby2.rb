@@ -29,8 +29,7 @@ elsif (player_choice == 0 && computer_choice == 1) ||
       (player_choice == 2 && computer_choice == 0) 
       @case_pattern = "win"
       puts"じゃんけんに勝ちました。あっちむいて・・・"
-      attimuite
-      return false
+      return attimuite
       
 
 elsif (player_choice == 1 && computer_choice == 0) ||
@@ -38,8 +37,7 @@ elsif (player_choice == 1 && computer_choice == 0) ||
       (player_choice == 0 && computer_choice == 2)
       @case_pattern = "lose"
       puts"じゃんけんに負けました。あっちむいて・・・"
-      attimuite
-      return false
+      return attimuite
 else
     puts "戦いませんさようなら〜"
     exit
