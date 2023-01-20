@@ -1,88 +1,79 @@
-def janken
-attimuite = ""
-
 puts "じゃんけん......"
 
+class Jantai
+    
+def janken
+    @case_pattern = ""
+    
 puts "[0]グー [1]チョキ [2]パー [3]戦わない"
 
-player_hand = gets.to_i
-computer_hand = rand(3)
+player_choice = gets.to_i
+computer_choice = rand(3)
 
 jankens = ["グー","チョキ","パー","戦わない"]
 
 puts "ホイ！"
 
-puts "あなた:#{jankens[player_hand]}を出しました"
-puts "相手:#{jankens[computer_hand]}を出しました"
+puts "あなた:#{jankens[player_choice]}を出しました"
+puts "相手:#{jankens[computer_choice]}を出しました"
 
 
-if player_hand == computer_hand
+if player_choice == computer_choice
    
     puts "あいこで......"
-    return true
-elsif (player_hand == 0 && computer_hand == 1) ||
-      (player_hand == 1 && computer_hand == 2) ||
-      (player_hand == 2 && computer_hand == 0) 
+    return janken
+    
+elsif (player_choice == 0 && computer_choice == 1) ||
+      (player_choice == 1 && computer_choice == 2) ||
+      (player_choice == 2 && computer_choice == 0) 
+      @case_pattern = "win"
       puts"じゃんけんに勝ちました。あっちむいて・・・"
-      attimuite = "jankati"
+      attimuite
+      return false
+      
 
-elsif (player_hand == 1 && computer_hand == 0) ||
-      (player_hand == 2 && computer_hand == 1) ||
-      (player_hand == 0 && computer_hand == 2)
+elsif (player_choice == 1 && computer_choice == 0) ||
+      (player_choice == 2 && computer_choice == 1) ||
+      (player_choice == 0 && computer_choice == 2)
+      @case_pattern = "lose"
       puts"じゃんけんに負けました。あっちむいて・・・"
-      attimuite = "janmake"
+      attimuite
+      return false
 else
     puts "戦いませんさようなら〜"
+    exit
+end
 end
 
-case attimuite
-when "jankati"
-    puts "[0]上 [1]下 [2]左 [3]右"
-    
-      player_direction = gets.to_i
-　　  computer_direction = rand(3)
+def attimuite
 
-　　  directions = ["上","下","左","右"]
-　　
-　　  puts "ホイ！"
+puts "----------------------------------"
+puts "[0]上 [1]下 [2]右 [3]左"
 
-      puts "あなた:#{directions[player_direction]}"
-      puts "相手:#{directions[computer_direction]}"
+player_choice = gets.to_i
+computer_choice = rand(4)
+
+jankens = ["上","下","右","左"]
+
+puts "ホイ！"
+
+puts "あなた:#{jankens[player_choice]}"
+puts "相手:#{jankens[computer_choice]}"
       
-    if player_direction == computer_direction
+if player_choice == computer_choice && @case_pattern == "win"
     puts "あなたの勝ちです！"
-　　else
+    exit
+elsif player_choice == computer_choice && @case_pattern == "lose"
     puts "あなたの負けです！"
-    end
-    
-when "janmake"
-      puts "[0]上 [1]下 [2]左 [3]右"
-      
-      player_yubi = gets.to_i
-　　  computer_yubi = rand(3)
-
-　　  direct = ["上","下","左","右"]
-　　
-　　  puts "ホイ！"
-
-      puts "あなた:#{direct[player_yubi]}"
-      puts "相手:#{direct[computer_yubi]}"
-      
-    if player_yubi == computer_yubi
-    puts "あなたの負けです！"
-　　else
-    puts "あなたの勝ちです！"
-    end
-end   
+    exit
+else
+    puts "もう一回だ！"
+    return janken 
+end
+end
 end
 
-next_game = true
+name = Jantai.new()
 
-while next_game
-  next_game = janken
-end
-
-
-    
-
-
+name.janken()
+name.attimuite()
